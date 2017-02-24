@@ -1,0 +1,182 @@
+{{> header}}
+<header>
+    <img class="logo" src="images/552mxg.png" />
+    <h1>Virtual Wingman</h1>
+    <div class="menu_button">&#9776;</div>
+    <nav>
+        <form>
+            <h2>Custom Wingman #1</h2>
+            <input type="text" name="custom_1_name" class="custom_1_name" data-num="1" placeholder="Name"/>
+            <input type="text" name="custom_1_num" class="custom_1_num" data-num="1" placeholder="Number" />
+            <button class="save" onclick="save_custom(1);">Save</button>
+            <button class="del" onclick="del_custom(1);">Delete</button>
+        </form>
+        <form>
+            <h2>Custom Wingman #2</h2>
+            <input type="text" name="custom_2_name" class="custom_2_name" data-num="2" placeholder="Name"/>
+            <input type="text" name="custom_2_num" class="custom_2_num" data-num="2" placeholder="Number" />
+            <button class="save" onclick="save_custom(2);">Save</button>
+            <button class="del" onclick="del_custom(2);">Delete</button>
+        </form>
+        <button class="logout">Log Out</button>
+    </nav>
+</header>
+
+<section class="main">
+    <div class="group">
+        <div class="button aadd"><a href="tel:4058204444">A2D2</a></div>
+        <div class="button custom one half"><a></a></div>
+    </div>
+    <div class="group">
+        <div class="button cab"><a href="tel:4051234567">Taxi</a></div>
+        <div class="button custom two half"><a></a></div>
+    </div>
+</section>
+
+<section class="drawer">
+    <div class="opener">&#9650;</div>
+    <div class="button small shirt"><a href="tel:9073828977">Shirt</a></div>
+    <div class="button small chaplain"><a href="tel:4197856322">Chaplain</a></div>
+    <div class="button small sapr"><a href="tel:4057347272">SARC</a></div>
+    <div class="button small afrc"><a href="tel:4057392747">AFRC</a></div>
+</section>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.2.0/jquery.fittext.min.js"></script>
+<script>
+    function size_blocks(viewport){
+    
+    var block_full = {
+        w: (viewport.w - 40),
+        h: Math.floor(((viewport.h - 130) / 2) - 30)
+    };
+    var block_half = {
+        w: Math.floor((block_full.w / 2) - 10),
+        h: Math.floor((block_full.h / 2))
+    };
+    var block_small = {
+        w: Math.floor((block_full.w / 3) - 13.33),
+        h: Math.floor((block_full.w / 3) - 13.33)
+    };
+    
+    $('.button:not(.half, .small)').css({
+        'height': block_full.h + 'px',
+        'width': block_full.w + 'px',
+        'line-height': block_full.h + 'px',
+        'left': '20px',
+        'margin-top': '20px'
+    });
+    
+    $('.half').css({
+        'height': block_full.h + 'px',
+        'width': block_half.w + 'px',
+        'line-height': block_full.h + 'px',
+        'margin-left': '20px',
+        'margin-top': '20px'
+    });
+    
+    $('.small').css({
+        'height': block_small.h + 'px',
+        'width': block_small.w + 'px',
+        'line-height': block_small.h + 'px',
+        'margin-left': '13.33%',
+        'margin-bottom': '20px'
+    });
+    
+    $('nav').css({'min-height': (viewport.h - 170) + 'px'})
+    
+}
+function get_viewport(){
+    var viewport = {
+        w: $(window).outerWidth(true),
+        h: $(window).outerHeight(true)
+    }
+    
+    console.log(viewport.h);
+    return viewport;
+}
+
+function save_custom(n){
+    event.preventDefault();
+    localStorage.setItem('custom_' + n + '_name', $('input.custom_' + n + '_name').val());
+    localStorage.setItem('custom_' + n + '_num', $('input.custom_' + n + '_num').val());
+    location.reload();
+}
+
+function del_custom(n){
+    event.preventDefault();
+    localStorage.removeItem('custom_' + n + '_name');
+    localStorage.removeItem('custom_' + n + '_num');
+    location.reload();
+}
+
+function open_menu(){
+    $('nav').toggleClass('open');
+}
+
+function open_drawer(){
+    
+    var is_open = $('.drawer').hasClass('open');
+    
+    if(is_open){
+        $('.drawer').removeClass('open');
+        $('.opener').html("&#9650;")
+    } else {
+        $('.drawer').addClass('open');
+        $('.opener').html("&#9660;")
+    }
+    
+}
+
+function log_out(){
+    localStorage.removeItem('base_aadd_num');
+    localStorage.removeItem('base_afrc_num');
+    localStorage.removeItem('base_cab_num');
+    localStorage.removeItem('base_sapr_num');
+    localStorage.removeItem('logged_in');
+    localStorage.removeItem('logo');
+    localStorage.removeItem('unit_base');
+    localStorage.removeItem('unit_chaplain_num');
+    localStorage.removeItem('unit_name');
+    localStorage.removeItem('unit_pass');
+    localStorage.removeItem('unit_shirt_num');
+    
+    window.location.href = "./login";
+}
+
+function init_custom(){
+    
+    if(localStorage.getItem('custom_1_name') && localStorage.getItem('custom_1_num')){
+        $('.custom.one').addClass('show').children('a').prop('href', 'tel:' + localStorage.getItem('custom_1_num')).html(localStorage.getItem('custom_1_name'));
+        $('.aadd').addClass('half');
+        $('input.custom_1_name').val(localStorage.getItem('custom_1_name'));
+        $('input.custom_1_num').val(localStorage.getItem('custom_1_num'));
+    }
+    if(localStorage.getItem('custom_2_name') && localStorage.getItem('custom_2_num')){
+        $('.custom.two').addClass('show').children('a').prop('href', 'tel:' + localStorage.getItem('custom_2_num')).html(localStorage.getItem('custom_2_name'));
+        $('.cab').addClass('half');
+        $('input.custom_2_name').val(localStorage.getItem('custom_2_name'));
+        $('input.custom_2_num').val(localStorage.getItem('custom_2_num'));
+    }
+    
+    size_blocks(get_viewport());
+    
+}
+
+$(window).load(function(){
+    init_custom();
+    $('.button:not(.custom)').fitText(0.5);
+    $('.button.custom').fitText();
+    $('header h1').fitText(); 
+    $('.opener').click(function(){
+        open_drawer();
+    });
+    
+    $('.logout').click(function() {
+        log_out();
+    });
+    
+    $('.menu_button').click(function(){
+        open_menu();
+    });
+});
+</script>
+{{> footer}}

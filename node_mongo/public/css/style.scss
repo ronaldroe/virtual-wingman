@@ -1,0 +1,236 @@
+// @import "compass/css3";
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Arial, sans-serif;}
+
+form.login{
+    background: #fff;
+    position: relative;
+    width: 80%;
+    left: 10%;
+    top: 80px;
+    padding: 40px 0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px #666,
+                0px 0px 3px #666;
+    input, select{
+        padding: 10px;
+        margin-bottom: 40px;
+        display: block;
+        position: relative;
+        width: 90%;
+        left: 5%;
+        font-size: 32px;
+        &[type=submit]{
+            margin-bottom: 0;
+            &.password_error{
+                background: #fefcea;
+                background: linear-gradient(to bottom, #fefcea 0%,#f1da36 100%);
+                color: white;
+                text-shadow: 1px 1px 2px #666;
+            }
+            &.login_error{
+                background: #a90329;
+                background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
+                color: white;
+                text-shadow: 1px 1px 2px #666;
+            }
+        }
+    }
+    h2{
+        display: none;
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 40px;
+        &.show{
+            display: block;
+        }
+    }
+}
+
+header{
+    background: #828c95;
+    background: linear-gradient(to bottom, rgba(181,189,200,0.75) 0%,rgba(43,53,58,0.75) 100%);
+    height: 80px;
+    width: 100%;
+    box-shadow: 0px 3px 3px #333;
+    h1{
+        color: white;
+        float: left;
+        width: calc(100% - 175px);
+        line-height: 80px;
+        text-align: center;
+        text-shadow: 2px 2px 1px #333;
+    }
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+        height: 0;
+        width: 0;
+    }
+    .menu_button{
+        float: right;
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+        line-height: 80px;
+        font-size: 36px;
+        color: #fff;
+        cursor: pointer;
+        text-align: center;
+        &:active{
+            background: rgba(black, 0.2);
+        }
+    }
+    .logo{
+        float: left;
+        height: 70px;
+        margin-top: 5px;
+        margin-left: 10px;
+    }
+    nav{
+        background: #828c95;
+        background: linear-gradient(to bottom, rgba(181,189,200,1) 0%,rgba(43,53,58,1) 100%);
+        position: absolute;
+        left: 5%;
+        top: 99px;
+        padding: 20px 0;
+        width: 90%;
+        z-index: 1001;
+        display: none;
+        form{
+            position: relative;
+            margin-bottom: 20px;
+            width: 90%;
+            left: 5%;
+            h2{
+                width: 100%;
+                color: white;
+                text-shadow: 2px 2px 1px #333;
+                margin-bottom: 10px;
+                font-size: 20px;
+            }
+            input, input:focus{
+                display: block;
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 5px;
+                font-size: 18px;
+            }
+            button{
+                float: left;
+                width: 45%;
+                &.save{
+                    margin-right: 10%;
+                }
+            }
+            &::after{
+                content: "";
+                display: block;
+                clear: both;
+                height: 0;
+                width: 0;
+            }
+        }
+        button{
+            padding: 2px;
+            font-size: 18px;
+        }
+        button.logout{
+            position: relative;
+            left: 5%;
+        }
+        &.open{
+            display: block;
+        }
+    }
+}
+
+.main{
+    position: relative;
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+        height: 0;
+        width: 0;
+    }
+}
+
+.group{
+    position: relative;
+    width: 100%;
+    &::after{
+        content: "";
+        display: block;
+        clear: both;
+        height: 0;
+        width: 0;
+    }
+}
+
+.button{
+    outline: 1px solid black; /*Delete Me*/
+    position: relative;
+    a{
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        text-shadow: 2px 2px 1px #333;
+    }
+    &.custom{
+        display: none;
+    }
+    &.show{
+        display: block;
+    }
+    &.half, &.small{
+        float: left;
+    }
+    &.sapr{
+        background: linear-gradient(to bottom, rgba(58,130,140,1) 0%,rgba(38,129,142,1) 50%,rgba(16,125,140,1) 100%);
+    }
+    &.afrc{
+        background: linear-gradient(to bottom, rgba(46,104,155,1) 0%,rgba(23,93,155,1) 50%,rgba(0,82,156,1) 100%);
+    }
+    &.shirt{
+        background: linear-gradient(to bottom, rgba(252,210,106,1) 0%,rgba(254,202,68,1) 50%,rgba(252,189,30,1) 100%);
+    }
+    &.chaplain{
+        background: linear-gradient(to bottom, #bab9a9 0%,#bcb98e 50%,#bab571 100%);
+    }
+    &.aadd, &.cab{
+        background: linear-gradient(to bottom, rgba(44,73,168,1) 0%,rgba(39,65,151,1) 50%,rgba(32,54,126,1) 100%);
+    }
+    &.custom{
+        background: linear-gradient(to bottom, rgba(204,204,199,1) 0%,rgba(168,168,164,1) 50%,rgba(127,127,126,1) 100%);
+    }
+}
+
+.drawer{
+    background: linear-gradient(to bottom, rgba(44,73,168,1) 0%,rgba(39,65,151,1) 44%,rgba(32,54,126,1) 100%);
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    bottom: 0;
+    padding-bottom: 20px;
+    z-index: 1000;
+    box-shadow: 0px -3px 3px #333;
+    &.open{
+        height: auto;
+    }
+    .opener{
+        width: 100%;
+        height: 52px;
+        line-height: 52px;
+        text-align: center;
+        font-size: 40px;
+        color: white;
+        text-shadow: 2px 2px 2px #333;
+        cursor: pointer;
+    }
+}

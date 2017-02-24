@@ -1,0 +1,15 @@
+{
+  "name": "drunk_button",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "node-compass": "0.2.3",
+    "grunt": "~0.4.2",
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-autoprefixer": "~0.7.2"
+  }
+}

@@ -1,0 +1,20 @@
+{{> header}}
+<form action="sendlogin" class="login" method="post">
+    <h2 class="password_error">Incorrect Password</h2>
+    <h2 class="login_error">Something's Wrong. Try Again</h2>
+    <select name="unit"> 
+    </select>
+    <input type="password" name="pass" placeholder="password" />
+    <input type="submit" value="Log In" />
+</form>
+<script id="select-template" type="text/x-handlebars-template">
+    <option>Select Unit</option>
+    {{#data_opts}}
+        <option value="{{unit_name}}">
+            {{unit_name}}
+        </option>
+    {{/data_opts}}
+</script>
+<div class="output"></div>
+<script src="scripts/login.js"></script>
+{{> footer}}
